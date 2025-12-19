@@ -30,7 +30,14 @@ body {
     animation: fadeIn 0.8s ease-out forwards; /* 高速化 */
 }
 
-header { text-align: center; padding: 60px 20px 30px; background-color: #000000; }
+/* 中央寄せ調整 */
+header { 
+    text-align: center; 
+    padding: 60px 20px 30px; 
+    background-color: #000000; 
+    max-width: 1000px; /* 追加：コンテンツ幅と合わせる */
+    margin: 0 auto; /* 追加：中央寄せ */
+}
 .header-logo { max-width: 350px; width: 80%; height: auto; margin: 0 auto; display: block; opacity: 0; animation: elegantFadeIn 1.0s ease-out forwards; animation-delay: 0.2s; }
 
 /* 共通ボタンデザイン (.detail-button) 
@@ -140,7 +147,13 @@ header { text-align: center; padding: 60px 20px 30px; background-color: #000000;
 /* ===============================================
    Other Sections
    =============================================== */
-.info-section { width: 100%; max-width: 1000px; margin: 120px auto; padding: 0 5%; box-sizing: border-box; }
+.info-section { 
+    width: 100%; 
+    max-width: 1000px; 
+    margin: 120px auto; /* 中央寄せ */
+    padding: 0 5%; 
+    box-sizing: border-box; 
+}
 .section-title {
     font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 600; text-align: center; letter-spacing: 0.1em;
     color: #fff; margin-bottom: 60px; position: relative; padding-bottom: 15px; opacity: 0;
@@ -174,7 +187,18 @@ header { text-align: center; padding: 60px 20px 30px; background-color: #000000;
 .credit-content dd { text-align: left; margin: 0; color: #aaa; font-weight: 300; }
 
 /* Footer */
-footer { text-align: center; padding: 60px 0; margin-top: 80px; opacity: 0; animation: elegantFadeIn 1.0s ease-out forwards; animation-delay: 0.5s; }
+/* 中央寄せ調整 */
+footer { 
+    text-align: center; 
+    padding: 60px 0; 
+    margin-top: 80px; 
+    max-width: 1000px; /* 追加：コンテンツ幅と合わせる */
+    margin-left: auto; /* 追加：中央寄せ */
+    margin-right: auto; /* 追加：中央寄せ */
+    opacity: 0; 
+    animation: elegantFadeIn 1.0s ease-out forwards; 
+    animation-delay: 0.5s; 
+}
 .footer-nav a { color: #666; text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 0.1em; transition: color 0.3s; }
 .footer-nav a:hover { color: #fff; }
 
@@ -197,4 +221,38 @@ footer { text-align: center; padding: 60px 0; margin-top: 80px; opacity: 0; anim
     .process-item::after { left: -10px; top: 0; transform: translate(-50%, 0); margin-top: 10px; }
     .process-images { width: 100%; margin-bottom: 15px; }
     .process-caption { width: 100%; padding: 0; text-align: left !important; }
+}
+
+/* ===============================================
+   Snow Animation Styles (新規追加)
+   =============================================== */
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* クリックやスクロールを邪魔しないようにする */
+    z-index: 9999; /* 全ての上に表示 */
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px; /* 画面の上からスタート */
+    background-color: #ffffff;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation-name: snowfall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* 画面下まで落下 */
+    }
 }
